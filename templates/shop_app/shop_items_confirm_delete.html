@@ -1,0 +1,16 @@
+
+<body>
+<form method="post">
+    {% csrf_token %}
+      <div class="toast">
+        <div class="toast-header">
+        </div>
+          <div class="toast-body">
+            Are You really want to delete this product? <br>
+            <input type="submit" value="Delete">
+           <a href="{% url 'shop_app:product_list' %}">No</a>
+          </div>
+        </div>
+        
+</form>
+</body>

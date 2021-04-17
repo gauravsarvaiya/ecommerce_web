@@ -1,0 +1,75 @@
+<!-- <div class="modal" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Modal title</h5>
+          <p>Modal body text goes here.</p>
+          <button
+            type="button"
+            class="btn-close"
+            data-mdb-dismiss="modal"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="modal-body">
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-mdb-dismiss="modal">
+            Close
+          </button>
+          <button type="button" class="btn btn-primary"><a href="{% url 'customer_app:order_summery' %}"> order_summery</a></button>
+        </div>
+      </div>
+    </div>
+  </div> -->
+
+<!DOCTYPE html>
+{% load cart_templates_tags %} 
+  <html lang="en">
+  <head>
+    <title>Bootstrap Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  </head>
+  <body>
+
+  <div class="container">
+   <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <a href="{% url 'customer_app:product_list_show' %}" class="close"  data-dismiss="modal">&times;</a> </button>
+            <center><h4 class="modal-title">YOUR SELECTED ITEMS         <span style="color: red;">{{ request.user|cart_item_count }}</span></h4></center>
+          </div>
+          <div class="modal-body">
+            <tbody>
+                {% for i in object.item.all %}
+               
+                <tr>
+                    <th>{{ forloop.counter }}</th><br>
+                    <td>{{ i.Product.product_name }}</td><br>
+                    <td>{{ i.Product.product_price }}</td><br>
+                    <td>{{ i.Product.product_brand }}</td><br>
+                    <td><img src="{{ i.Product.product_image.url}}" alt="images" width="50",height="50"></td><br><br>
+                </tr>
+            
+                {% endfor %}
+           </tbody>
+
+            
+          </div>
+           <div class="modal-footer">
+            <center><a href="{% url 'customer_app:order_summery' %}"class='btn btn-primary'>ORDER_SUMMERY</a></center>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+    
+  </div>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.3.0/mdb.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
+</body>
+</html>

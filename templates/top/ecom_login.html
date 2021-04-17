@@ -1,0 +1,26 @@
+
+{% extends 'base.html' %}
+{% block body %}
+    <div class="container border p-5 mt-5">
+    <form method="post" action="{% url 'ecom_app:ecom_login'%}">
+
+        {% csrf_token %}
+      <div class="form-outline mb-4">
+        <input type="text" id="form1Example1" class="form-control" name="username"/>
+        <label class="form-label" for="form1Example1">Username</label>
+      </div>
+
+
+      <div class="form-outline mb-4">
+        <input type="password" id="form1Example2" class="form-control" name="password"/>
+        <label class="form-label" for="form1Example2">Password</label>
+      </div>
+
+
+
+      <!-- Submit button -->
+      <button type="submit" class="btn btn-primary btn-block">Sign in</button>
+
+    </form>
+</div>
+{% endblock %}

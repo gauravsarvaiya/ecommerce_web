@@ -1,0 +1,34 @@
+{% extends 'customer_app/customer_base.html' %}
+
+{% block body %}
+
+
+  <hr>
+ <center><h2>SHOP-ITEMS</h2></center> <br>
+          
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>sr.no</th>
+        <th>product_name</th>
+        <th>product_price</th>
+        <th>product_brand</th>
+        <th>product_image</th>
+        <th>actions</th>
+      </tr>
+    </thead>
+    <tbody>
+           {% for i in object_list %}
+           <tr>
+               <th>{{ forloop.counter }}</th>
+               <td>{{ i.product_name }}</td>
+               <td>{{ i.product_price }}</td>
+               <td>{{ i.product_brand }}</td>
+               <td><img src="{{ i.product_image.url}}" alt="images" width ="50",height ="50"></td>
+               <td><a href="{% url 'customer_app:add_to_cart' i.id %}"class='btn btn-sm btn-primary'>add cart</a></td>
+            </tr>
+           {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}
